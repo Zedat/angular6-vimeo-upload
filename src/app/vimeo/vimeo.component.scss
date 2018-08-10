@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '../../assets/animations.scss';
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  .video-container {
+    height: 300px;
+    width: 500px;
+    background: #333138;
+    border-radius: 15px;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    position: relative;
+    .vimeo-logo {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      text-align: right;
+      img {
+        width: 10%;
+      }
+    }
+    .video-init-container {
+      margin-top: 50px;
+    }
+    .video-row {
+      .video-inputs {
+        display: flex;
+        flex-direction: column;
+        margin: 15px;
+        input {
+          margin-bottom: 15px;
+          height: 30px;
+          background: none;
+          padding: 0 15px;
+          border: 2px solid deepskyblue;
+          color: #fff;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+        }
+      }
+    }
+    .file-chooser-container {
+      text-align: center;
+      img {
+        cursor: pointer;
+      }
+    }
+    .vimeo-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrong-type {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      .vimeo-api-error {
+        padding: 30px;
+        text-align: center;
+        color: red;
+        .small-error-message {
+          font-size: 10px;
+        }
+      }
+    }
+    .all-success {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: green;
+      text-align: center;
+      .try-again-success {
+        margin-top: 15px;
+      }
+    }
+    .vimeo-loading-process {
+      display: flex;
+      .progress-bar-striped {
+        border-radius: 15px;
+      }
+    }
+    .link {
+      cursor: pointer;
+      color: deepskyblue;
+    }
+  }
+}
+.full-height {
+  height: 100%;
+}
+

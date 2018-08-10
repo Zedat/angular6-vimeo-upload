@@ -1,0 +1,68 @@
+<div class="main-container">
+  <div class="video-container">
+    <div class="vimeo-logo">
+      <img src="../assets/rsz_vimeo-logo.png" alt="Vimeo Logo">
+    </div>
+    <div [ngSwitch]="uploadStatus" class="full-height">
+
+      <!-- Switch upload status -->
+      <div class="video-init-container" *ngSwitchCase="'0'">
+        <div class="video-row">
+          <form [formGroup]="vimeoUploadForm">
+            <div class="video-inputs">
+              <input type="text" placeholder="Vimeo API key" formControlName="vimeoAPI">
+              <input type="text" placeholder="Vimeo Vimeo Name" formControlName="vimeoVideoName">
+              <input type="text" placeholder="Vimeo Video Description" formControlName="vimeoVideoDescription">
+              <input type="file" (change)="selectFile($event)" multiple #vimeoUpload style="display: none;">
+            </div>
+          </form>
+        </div>
+        <div class="video-row">
+          <div class="file-chooser-container" (click)="vimeoUpload.click()">
+            <img src="../assets/upload-button.png" alt="Upload button">
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'1'" class="vimeo-loading full-height">
+          <div class="lds-ripple"><div></div><div></div></div>
+      </div>
+
+      <div *ngSwitchCase="'2'" class="wrong-type full-height">
+        <div>
+          <span> Opps! Wrong file type! <span class="link" (click)="allowUpload()">Click Here</span> to try again.</span>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'3'" class="vimeo-loading-process full-height">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"
+             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': uploadPercent + '%'}">
+          <span *ngIf="uploadPercent > 5">
+            {{ uploadPercent }}
+          </span>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'4'" class="wrong-type full-height">
+        <div class="vimeo-api-error">
+          <span> Something wrong! We receive some error from Vimeo. Please, check your account limits. <span class="link" (click)="allowUpload()">Click Here</span> to try again.</span>
+          <br>
+          <span class="small-error-message">(check developer console for more information)</span>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'5'" class="all-success full-height">
+        <div>
+          <div class="lds-heart"><div></div></div>
+          <br>
+          <span> Success! </span>
+          <div class="try-again-success">
+            <span class="link" (click)="allowUpload()">Click Here</span> <br> to try again.
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchDefault></div>
+    </div>
+  </div>
+</div>
